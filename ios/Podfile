@@ -1,0 +1,26 @@
+platform :ios, '10.0'
+
+# CocoaPods analytics sends network stats synchronously affecting flutter build latency.
+ENV['COCOAPODS_DISABLE_STATS'] = 'true'
+
+flutter_root = '/Users/mllrs/development/flutter' # Update this path to your Flutter SDK root
+
+# Load the helper functions from the Flutter install directory
+load File.join(flutter_root, 'packages', 'flutter_tools', 'bin', 'podhelper.rb')
+
+target 'Runner' do
+  use_frameworks!
+  use_modular_headers!
+
+  # Install pods needed for Flutter plugins
+  install_all_flutter_pods(flutter_root)
+  
+  # Install pods needed for Flutter plugins
+  install_all_flutter_pods(flutter_root)
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    flutter_additional_ios_build_settings(target)
+  end
+end
